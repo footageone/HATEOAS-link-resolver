@@ -1,0 +1,49 @@
+{
+  "name": "hateoas-link-resolver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "esnext": "index.js",
+  "scripts": {
+    "pretest": "tsc",
+    "test": "nyc mocha",
+    "watch": "testdeck-watch",
+    "prepare": "tsc",
+    "prepublishOnly": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/footageone/HATEOAS-link-resolver.git"
+  },
+  "author": "daniel.schuba@footage.one",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/footageone/HATEOAS-link-resolver/issues"
+  },
+  "homepage": "https://github.com/footageone/HATEOAS-link-resolver#readme",
+  "devDependencies": {
+    "@testdeck/mocha": "0.0.6",
+    "@types/chai": "^4.2.7",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nyc": "^15.0.0",
+    "source-map-support": "^0.5.16",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
+  }
+}
