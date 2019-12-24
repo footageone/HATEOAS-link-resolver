@@ -1,0 +1,1 @@
+# HATEOAS-link-resolver
