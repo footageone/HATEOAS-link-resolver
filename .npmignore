@@ -112,6 +112,9 @@ typings/
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+# everything
+.idea/
+
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
@@ -189,6 +192,7 @@ Temporary Items
 
 # typescript
 *.ts
+!*.d.ts
 
 # testfiles
 test/
