@@ -1,5 +1,9 @@
 # HATEOAS-link-resolver
 
+[![Build Status](https://travis-ci.org/footageone/HATEOAS-link-resolver.svg?branch=master)](https://travis-ci.org/footageone/HATEOAS-link-resolver)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ef5099936ee4de8a26d4/maintainability)](https://codeclimate.com/github/footageone/HATEOAS-link-resolver/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ef5099936ee4de8a26d4/test_coverage)](https://codeclimate.com/github/footageone/HATEOAS-link-resolver/test_coverage)
+
 Small helper library for resolving templated HATEOAS links
 
 ## Install
