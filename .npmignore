@@ -196,3 +196,7 @@ Temporary Items
 
 # testfiles
 test/
+
+# CI
+.travis.yml
+.nvmrc

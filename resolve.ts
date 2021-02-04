@@ -1,11 +1,11 @@
 export interface Params {
-    [key: string]: string;
+    [key: string]: string | number | boolean;
 }
 
 export function resolve(link: string, params: Params): string {
     let {url, options} = getLinkOptions(link);
     Object.entries(params).forEach(([key, value]) => {
-        url = url.replace(new RegExp(`\{${key}\}`), value);
+        url = url.replace(new RegExp(`\{${key}\}`), value.toString());
     });
     url = addQueryParams(url, options, params);
     return url;
@@ -16,7 +16,7 @@ function addQueryParams(link: string, options: Array<string>, params: Params) {
     options.forEach((name) => {
         const value = params[name];
         if (value != null) {
-            url.searchParams.set(name, value);
+            url.searchParams.set(name, value.toString());
         }
     });
     return url.toString();

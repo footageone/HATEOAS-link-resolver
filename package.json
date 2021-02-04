@@ -12,7 +12,7 @@
     "test": "nyc mocha",
     "watch": "testdeck-watch",
     "build": "tsc && tsc -p tsconfig-module.json",
-    "prepare": "tsc",
+    "prepare": "npm run build",
     "prepublishOnly": "tsc"
   },
   "repository": {
