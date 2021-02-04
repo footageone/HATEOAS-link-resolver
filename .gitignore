@@ -106,3 +106,5 @@ dist
 # JS and .d.ts
 *.js
 *.d.ts
+
+.idea
