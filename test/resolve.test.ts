@@ -32,6 +32,10 @@ class PathAndQuery {
     @test queryAndOptionalAdditionalQueryParams() {
         assert.equal(resolve("https://example.org/path?ids={ids}{&lang,set}", {ids: "678", set: "ALL"}), "https://example.org/path?ids=678&set=ALL", "With additional query params")
     }
+
+    @test queryAndOptionalAdditionalQueryParamsWithNullValue() {
+        assert.equal(resolve("https://example.org/path?ids={ids}{&lang,set}", {ids: "678", lang: "en", set: null}), "https://example.org/path?ids=678&lang=en", "With additional query params and null value")
+    }
 }
 
 @suite
@@ -67,6 +71,18 @@ class OnlyQueryParams {
         }), "https://example.org/?two=ONE")
     }
 
+    @test oneFromListWithBooleanValue() {
+        assert.equal(resolve("https://example.org/{?query,one,two,three,four}", {
+            two: true,
+        }), "https://example.org/?two=true")
+    }
+
+    @test oneFromListWithNumberValue() {
+        assert.equal(resolve("https://example.org/{?query,one,two,three,four}", {
+            two: 2,
+        }), "https://example.org/?two=2")
+    }
+
     @test twoFromList() {
         assert.equal(resolve("https://example.org/{?query,one,two,three,four}", {
             two: "ONE",
@@ -74,10 +90,28 @@ class OnlyQueryParams {
         }), "https://example.org/?one=TWO&two=ONE")
     }
 
-    @test twoFromListOneNotExistant() {
+    @test twoFromListOneNotExistent() {
         assert.equal(resolve("https://example.org/{?query,one,two,three,four}", {
             two: "ONE",
             one: "TWO",
+            six: "NO"
+        }), "https://example.org/?one=TWO&two=ONE")
+    }
+
+    @test twoFromListOneNotExistentOneNullValue() {
+        assert.equal(resolve("https://example.org/{?query,one,two,three,four}", {
+            two: "ONE",
+            one: "TWO",
+            three: null,
+            six: "NO"
+        }), "https://example.org/?one=TWO&two=ONE")
+    }
+
+    @test twoFromListOneNotExistentOneUndefinedValue() {
+        assert.equal(resolve("https://example.org/{?query,one,two,three,four}", {
+            two: "ONE",
+            one: "TWO",
+            three: undefined,
             six: "NO"
         }), "https://example.org/?one=TWO&two=ONE")
     }

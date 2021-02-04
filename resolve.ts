@@ -1,11 +1,15 @@
 export interface Params {
-    [key: string]: string | number | boolean;
+    [key: string]: string | number | boolean | undefined | null;
 }
 
 export function resolve(link: string, params: Params): string {
     let {url, options} = getLinkOptions(link);
     Object.entries(params).forEach(([key, value]) => {
-        url = url.replace(new RegExp(`\{${key}\}`), value.toString());
+        if (value != null) {
+            url = url.replace(new RegExp(`\{${key}\}`), value.toString());
+        } else if (url.includes(`{${key}`)) {
+            throw new Error('Path params can not be null!')
+        }
     });
     url = addQueryParams(url, options, params);
     return url;
