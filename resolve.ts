@@ -2,7 +2,7 @@ export interface Params {
     [key: string]: string | number | boolean | undefined | null;
 }
 
-export function resolve(link: string, params: Params): string {
+export function resolve(link: string, params: Params = {}): string {
     let {url, options} = getLinkOptions(link);
     Object.entries(params).forEach(([key, value]) => {
         if (value != null) {

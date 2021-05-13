@@ -9,23 +9,23 @@ export interface LinkRepositoryDTO {
     [key: string]: LinkModel;
 }
 
-export class LinkRepository {
-    private _links: Map<string, LinkModel>;
-    constructor(links: LinkRepositoryDTO) {
+export class LinkRepository<T extends LinkRepositoryDTO = LinkRepositoryDTO> {
+    private _links: Map<keyof T, LinkModel>;
+    constructor(links: T) {
         this._links = new Map(Object.entries(links));
     }
 
-    has(key: string) {
+    has(key: keyof T) {
         return this._links.has(key);
     }
 
-    get(key: string) {
+    get(key: keyof T) {
         if (this.has(key)) {
             return this._links.get(key)?.href;
         }
     }
 
-    resolve(key: string, params: Params) {
+    resolve(key: keyof T, params: Params) {
         const url = this.get(key);
         if (url != null) {
             return resolve(url , params);
