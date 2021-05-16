@@ -2,52 +2,78 @@
   "name": "hateoas-link-resolver",
   "version": "1.0.6",
   "description": "",
-  "main": "index.js",
-  "typings": "index.d.ts",
-  "esnext": "esm/index.js",
-  "module": "esm/index.js",
-  "scripts": {
-    "pretest": "tsc",
-    "ci": "tsc",
-    "test": "nyc mocha",
-    "watch": "testdeck-watch",
-    "build": "tsc && tsc -p tsconfig-module.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "tsc"
+  "keywords": [
+    "hateoas-link-resolver"
+  ],
+  "homepage": "https://github.com/footageone/HATEOAS-link-resolver#readme",
+  "bugs": {
+    "url": "https://github.com/footageone/HATEOAS-link-resolver/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/footageone/HATEOAS-link-resolver.git"
   },
-  "author": "daniel.schuba@footage.one",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/footageone/HATEOAS-link-resolver/issues"
+  "author": "daniel.schuba@footage.one",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "browser": "./dist/hateoas-link-resolver.js",
+      "import": "./dist/hateoas-link-resolver.js",
+      "require": "./dist/hateoas-link-resolver.cjs.js",
+      "umd": "./dist/hateoas-link-resolver.umd.js"
+    },
+    "./": "./",
+    "./package.json": "./package.json"
   },
-  "homepage": "https://github.com/footageone/HATEOAS-link-resolver#readme",
-  "devDependencies": {
-    "@testdeck/mocha": "^0.1.2",
-    "@types/chai": "^4.2.14",
-    "@types/mocha": "^8.2.0",
-    "chai": "^4.2.0",
-    "mocha": "^8.2.1",
-    "nyc": "^15.1.0",
-    "source-map-support": "^0.5.19",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.3"
+  "main": "dist/hateoas-link-resolver.cjs.js",
+  "unpkg": "dist/hateoas-link-resolver.js",
+  "module": "dist/hateoas-link-resolver.js",
+  "source": "src/hateoas-link-resolver.ts",
+  "browser": "dist/hateoas-link-resolver.umd.js",
+  "types": "dist/hateoas-link-resolver.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "ci": "npm run build",
+    "watch": "klap watch",
+    "build": "klap build",
+    "prepare": "npm run build",
+    "prepublishOnly": "klap build",
+    "start": "klap start"
   },
   "nyc": {
+    "all": true,
+    "exclude": [
+      "**/*.d.ts"
+    ],
     "extension": [
       ".ts",
       ".tsx"
     ],
-    "exclude": [
-      "**/*.d.ts"
-    ],
     "reporter": [
       "html",
       "lcov"
-    ],
-    "all": true
+    ]
+  },
+  "devDependencies": {
+    "@testdeck/jest": "^0.1.2",
+    "@types/chai": "^4.2.14",
+    "@types/jest": "^26.0.23",
+    "chai": "^4.2.0",
+    "jest": "^26.6.3",
+    "klap": "^7.0.0",
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.19",
+    "ts-jest": "^26.5.6",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "esnext": "esm/index.js",
+  "klap": {
+    "example": "public/index.ts"
   }
 }

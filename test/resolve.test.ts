@@ -1,11 +1,11 @@
-import { suite, test } from "@testdeck/mocha";
+import { suite, test } from "@testdeck/jest";
 import { assert } from "chai";
-import { resolve } from '../resolve';
+import { resolve } from '../src/resolve';
 
 @suite
 class SimplePath {
     @test simplePathParamsAtEnd() {
-        assert.equal(resolve("https://example.org/{id}", {id: "2345"}), "https://example.org/2345");
+        expect(resolve("https://example.org/{id}", {id: "2345"})).toEqual("https://example.org/2345");
     }
 
     @test simplePathParamsInMiddle() {

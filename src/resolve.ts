@@ -1,6 +1,4 @@
-export interface Params {
-    [key: string]: string | number | boolean | undefined | null;
-}
+import type { Params } from "./params";
 
 export function resolve(link: string, params: Params = {}): string {
     let {url, options} = getLinkOptions(link);

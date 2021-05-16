@@ -1,7 +1,6 @@
-import { suite, test } from "@testdeck/mocha";
+import { suite, test } from "@testdeck/jest";
 import { assert } from 'chai';
-import { LinkRepository } from '../link-repository';
-import { resolve } from '../resolve';
+import { LinkRepository } from '../src/link-repository';
 
 @suite
 class LinkRepositoryTest {
@@ -17,9 +16,10 @@ class LinkRepositoryTest {
             }
         };
         const repo = new LinkRepository(links);
-        assert.isTrue(repo.has("endpoint1"));
-        assert.isTrue(repo.has("endpoint2"));
-        assert.isFalse(repo.has("endpoint3"));
+        expect(repo.has("endpoint1")).toBe(true);
+        expect(repo.has("endpoint2")).toBe(true);
+        // @ts-ignore
+        expect(repo.has("endpoint3")).toBe(false);
     }
 
     @test getLink() {
@@ -34,7 +34,7 @@ class LinkRepositoryTest {
             }
         };
         const repo = new LinkRepository(links);
-        assert.equal(repo.get("endpoint1"), "https://example.org/{id}");
+        expect(repo.get("endpoint1")).toEqual("https://example.org/{id}");
     }
 
     @test resolveLink() {
@@ -49,6 +49,6 @@ class LinkRepositoryTest {
             }
         };
         const repo = new LinkRepository(links);
-        assert.equal(repo.resolve("endpoint1", {id: "124"}), "https://example.org/124");
+        expect(repo.resolve("endpoint1", {id: "124"})).toEqual("https://example.org/124");
     }
 }
