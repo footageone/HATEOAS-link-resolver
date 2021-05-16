@@ -107,7 +107,7 @@ dist
 src/**/*.js
 src/**/*.d.ts
 
-.idea
+test/**/*.js
+test/**/*.d.ts
 
-#dist
-esm
+.idea

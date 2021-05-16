@@ -200,3 +200,6 @@ test/
 # CI
 .travis.yml
 .nvmrc
+
+# dist
+/dist/types/*.js

@@ -1,9 +1,13 @@
 {
   "name": "hateoas-link-resolver",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "",
   "keywords": [
-    "hateoas-link-resolver"
+    "hateoas-link-resolver",
+    "hateoas",
+    "rest",
+    "api",
+    "restful"
   ],
   "homepage": "https://github.com/footageone/HATEOAS-link-resolver#readme",
   "bugs": {
@@ -17,63 +21,49 @@
   "author": "daniel.schuba@footage.one",
   "sideEffects": false,
   "type": "module",
+  "source": "src/index.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "exports": {
-    ".": {
-      "browser": "./dist/hateoas-link-resolver.js",
-      "import": "./dist/hateoas-link-resolver.js",
-      "require": "./dist/hateoas-link-resolver.cjs.js",
-      "umd": "./dist/hateoas-link-resolver.umd.js"
-    },
-    "./": "./",
-    "./package.json": "./package.json"
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
   },
-  "main": "dist/hateoas-link-resolver.cjs.js",
-  "unpkg": "dist/hateoas-link-resolver.js",
-  "module": "dist/hateoas-link-resolver.js",
-  "source": "src/hateoas-link-resolver.ts",
-  "browser": "dist/hateoas-link-resolver.umd.js",
-  "types": "dist/hateoas-link-resolver.d.ts",
   "files": [
     "dist"
   ],
+  "browserslist": [
+    "last 2 Chrome versions",
+    "node >= 14"
+  ],
   "scripts": {
     "test": "jest",
-    "ci": "npm run build",
-    "watch": "klap watch",
-    "build": "klap build",
-    "prepare": "npm run build",
-    "prepublishOnly": "klap build",
-    "start": "klap start"
-  },
-  "nyc": {
-    "all": true,
-    "exclude": [
-      "**/*.d.ts"
-    ],
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "reporter": [
-      "html",
-      "lcov"
-    ]
+    "clean": "rimraf lib",
+    "declarations": "tsc -p tsconfig.json",
+    "build:esm": "cross-env BABEL_ENV=esmUnbundled babel src --extensions '.ts' --out-dir 'dist/esm' --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions '.ts' --out-dir 'dist/cjs' --source-maps",
+    "build:bundles": "cross-env BABEL_ENV=esmBundled rollup -c",
+    "build": "npm-run-all -l clean -p build:esm build:cjs build:bundles declarations"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@rollup/plugin-babel": "^5.2.3",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "@testdeck/jest": "^0.1.2",
     "@types/chai": "^4.2.14",
     "@types/jest": "^26.0.23",
+    "cross-env": "^7.0.3",
     "chai": "^4.2.0",
     "jest": "^26.6.3",
-    "klap": "^7.0.0",
-    "nyc": "^15.1.0",
-    "source-map-support": "^0.5.19",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.48.0",
+    "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^26.5.6",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  },
-  "esnext": "esm/index.js",
-  "klap": {
-    "example": "public/index.ts"
   }
 }

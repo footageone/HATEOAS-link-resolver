@@ -1,4 +1,4 @@
-import type { Params } from "./params";
+import { Params } from "./";
 
 export function resolve(link: string, params: Params = {}): string {
     let {url, options} = getLinkOptions(link);
