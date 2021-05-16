@@ -1,6 +1,7 @@
 const sharedPresets = ['@babel/typescript'];
 const shared = {
   ignore: ['src/**/*.spec.ts'],
+  plugins: ["@babel/plugin-proposal-optional-chaining"],
   presets: sharedPresets
 }
 
@@ -10,7 +11,7 @@ export default {
     esmBundled: {
       ...shared,
       presets: [['@babel/env', {
-        targets: "> 0.25%, not dead"
+        targets: "> 1%, not dead"
       }], ...sharedPresets],
     },
     cjs: {
