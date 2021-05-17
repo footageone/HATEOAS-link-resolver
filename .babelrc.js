@@ -1,7 +1,7 @@
 const sharedPresets = ['@babel/typescript'];
 const shared = {
   ignore: ['src/**/*.spec.ts'],
-  plugins: ["@babel/plugin-proposal-optional-chaining"],
+  plugins: ["@babel/plugin-proposal-optional-chaining", "babel-plugin-add-import-extension"],
   presets: sharedPresets
 }
 
