@@ -1,27 +1,46 @@
-const sharedPresets = ['@babel/typescript'];
+const sharedPresets = ['@babel/preset-typescript'];
+
+const plugins = ['@babel/plugin-proposal-optional-chaining'];
+
 const shared = {
   ignore: ['src/**/*.spec.ts'],
-  plugins: ["@babel/plugin-proposal-optional-chaining", "babel-plugin-add-import-extension"],
-  presets: sharedPresets
-}
+  presets: sharedPresets,
+};
 
-export default {
+module.exports = {
   env: {
     esmUnbundled: shared,
     esmBundled: {
       ...shared,
-      presets: [['@babel/env', {
-        targets: "> 1%, not dead"
-      }], ...sharedPresets],
+      plugins: [...plugins, 'babel-plugin-add-import-extension'],
+      presets: [
+        ...sharedPresets,
+        [
+          '@babel/env',
+          {
+            targets: '> 1%, not dead',
+          },
+        ],
+      ],
     },
     cjs: {
       ...shared,
-      presets: [['@babel/env', {
-        modules: 'commonjs'
-      }], ...sharedPresets],
+      plugins: [
+        ...plugins,
+        ['babel-plugin-add-import-extension', { extension: 'cjs' }],
+      ],
+      presets: [
+        ...sharedPresets,
+        [
+          '@babel/env',
+          {
+            modules: 'commonjs',
+          },
+        ],
+      ],
     },
     test: {
-      presets: ['@babel/env', ...sharedPresets]
+      presets: [...sharedPresets, '@babel/env'],
     },
-  }
-}
+  },
+};
