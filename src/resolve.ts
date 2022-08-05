@@ -9,6 +9,10 @@ export function resolve(link: string, params: Params = {}): string {
       throw new Error('Path params can not be null!');
     }
   });
+  const missingParam = url.match(/\S+\{(\w+)\}/);
+  if (missingParam) {
+    throw new Error(`Path param ${missingParam[1]} is missing`);
+  }
   url = addQueryParams(url, options, params);
   return url;
 }
