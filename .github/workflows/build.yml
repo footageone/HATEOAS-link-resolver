@@ -29,3 +29,7 @@ jobs:
     - run: npm ci
     - run: npm test
     - run: npm run build --if-present
+    - uses: paambaati/codeclimate-action@v2.2.4
+      env:
+        CC_TEST_REPORTER_ID: ecf046b80b53590463afdf19b1b072c16922eeae5a9b361a11684aff9d0897bc
+

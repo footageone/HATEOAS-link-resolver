@@ -1,6 +1,6 @@
 # HATEOAS-link-resolver
 
-[![Build Status](https://travis-ci.org/footageone/HATEOAS-link-resolver.svg?branch=master)](https://travis-ci.org/footageone/HATEOAS-link-resolver)
+![build](https://github.com/footageone/HATEOAS-link-resolver/actions/workflows/build.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ef5099936ee4de8a26d4/maintainability)](https://codeclimate.com/github/footageone/HATEOAS-link-resolver/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ef5099936ee4de8a26d4/test_coverage)](https://codeclimate.com/github/footageone/HATEOAS-link-resolver/test_coverage)
 

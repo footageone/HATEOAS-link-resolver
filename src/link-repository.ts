@@ -6,9 +6,7 @@ export interface LinkModel {
   templated?: boolean;
 }
 
-export interface LinkRepositoryDTO {
-  [key: string]: LinkModel;
-}
+export type LinkRepositoryDTO = Record<string, LinkModel>;
 
 export class LinkRepository<T extends LinkRepositoryDTO = LinkRepositoryDTO> {
   private _links: Map<keyof T, LinkModel>;
