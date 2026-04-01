@@ -1,8 +1,7 @@
 # HATEOAS-link-resolver
 
-![build](https://github.com/footageone/HATEOAS-link-resolver/actions/workflows/build.yml/badge.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ef5099936ee4de8a26d4/maintainability)](https://codeclimate.com/github/footageone/HATEOAS-link-resolver/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/ef5099936ee4de8a26d4/test_coverage)](https://codeclimate.com/github/footageone/HATEOAS-link-resolver/test_coverage)
+![CI](https://github.com/footageone/HATEOAS-link-resolver/actions/workflows/ci.yml/badge.svg)
+[![npm](https://img.shields.io/npm/v/hateoas-link-resolver)](https://www.npmjs.com/package/hateoas-link-resolver)
 
 Small helper library for resolving templated HATEOAS links
 
