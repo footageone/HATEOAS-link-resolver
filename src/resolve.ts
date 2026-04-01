@@ -1,10 +1,10 @@
-import { Params } from './';
+import type { Params } from './';
 
 export function resolve(link: string, params: Params = {}): string {
   let { url, options } = getLinkOptions(link);
   Object.entries(params).forEach(([key, value]) => {
     if (value != null) {
-      url = url.replace(new RegExp(`\{${key}\}`), value.toString());
+      url = url.replace(new RegExp(`{${key}}`), value.toString());
     } else if (url.includes(`{${key}`)) {
       throw new Error('Path params can not be null!');
     }

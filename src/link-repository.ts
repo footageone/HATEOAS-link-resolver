@@ -1,5 +1,5 @@
+import type { Params } from './params';
 import { resolve } from './resolve';
-import { Params } from './params';
 
 export interface LinkModel {
   href: string;
